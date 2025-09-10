@@ -63,6 +63,9 @@ RUN pip uninstall -y uv_unwrapper texture_baker || true \
     && cd uv_unwrapper && python setup.py clean --all && pip install . && cd .. \
     && cd texture_baker && python setup.py clean --all && pip install . && cd ..
 
+# Descargar modelo de rembg al construir la imagen
+RUN python -c "import rembg; rembg.new_session()"
+
 # Exponer puerto de la API
 EXPOSE 8080
 
