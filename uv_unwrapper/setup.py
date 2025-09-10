@@ -40,7 +40,8 @@ def get_extensions():
     define_macros = []
     extensions = []
 
-    this_dir = os.path.dirname(os.path.curdir)
+    #this_dir = os.path.dirname(os.path.curdir)
+    this_dir = os.path.dirname(os.path.abspath(__file__))
     sources = glob.glob(
         os.path.join(this_dir, library_name, "csrc", "**", "*.cpp"), recursive=True
     )

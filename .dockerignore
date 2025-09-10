@@ -1,0 +1,18 @@
+# Ignorar directorios innecesarios
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.log
+*.swp
+*.swo
+
+# Ignorar datos grandes
+outputs/
+demo_files/
+
+# Ignorar configs locales
+.env
+.vscode/
+.idea/

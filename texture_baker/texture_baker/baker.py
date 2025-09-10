@@ -59,6 +59,10 @@ class TextureBaker(nn.Module):
         Returns:
             Tensor, bake_resolution bake_resolution 3, float: Interpolated attributes
         """
+        # Fuerza los tipos correctos
+        attr = attr.to(torch.float32)
+        face_indices = face_indices.to(torch.int32)
+        rast = rast.to(torch.float32)
         return torch.ops.texture_baker_cpp.interpolate(
             attr, face_indices.to(torch.int32), rast
         )

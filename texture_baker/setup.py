@@ -21,6 +21,13 @@ def get_extensions():
         os.getenv("USE_METAL", "1" if torch.backends.mps.is_available() else "0") == "1"
     )
     use_native_arch = os.getenv("USE_NATIVE_ARCH", "1") == "1"
+
+    print("DEBUG:", debug_mode)
+    print("USE_CUDA env:", os.getenv("USE_CUDA"))
+    print("torch.cuda.is_available():", torch.cuda.is_available())
+    print("CUDA_HOME:", CUDA_HOME)
+    print("use_cuda (final):", use_cuda)
+
     if debug_mode:
         print("Compiling in debug mode")
 
@@ -58,7 +65,8 @@ def get_extensions():
     extensions = []
     libraries = []
 
-    this_dir = os.path.dirname(os.path.curdir)
+    #this_dir = os.path.dirname(os.path.curdir)
+    this_dir = os.path.dirname(os.path.abspath(__file__))
     sources = glob.glob(
         os.path.join(this_dir, library_name, "csrc", "**", "*.cpp"), recursive=True
     )
