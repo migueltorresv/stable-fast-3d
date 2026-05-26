@@ -60,8 +60,8 @@ COPY . .
 
 # Reinstalar uv_unwrapper y texture_baker desde el código fuente local
 RUN pip uninstall -y uv_unwrapper texture_baker || true \
-    && cd uv_unwrapper && python setup.py clean --all && pip install . && cd .. \
-    && cd texture_baker && python setup.py clean --all && pip install . && cd ..
+    && cd uv_unwrapper && python setup.py clean --all && pip install --no-build-isolation . && cd .. \
+    && cd texture_baker && python setup.py clean --all && pip install --no-build-isolation . && cd ..
 
 # Descargar modelo de rembg al construir la imagen
 RUN python -c "import rembg; rembg.new_session()"
